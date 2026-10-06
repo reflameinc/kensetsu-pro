@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>無料キャリア相談｜ケンセツキャリア</title>
+<meta name="description" content="関西・建設業界特化の転職エージェント。施工管理・設計・設備管理のキャリア相談を無料で。かんたん60秒でご登録いただけます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="建設業界のキャリアを、もっと前へ。｜ケンセツキャリア">
+<meta property="og:description" content="関西・建設業界特化の転職エージェント。完全無料・オンライン相談OK・無理な勧誘なし。">
+<meta property="og:url" content="https://reflame.co.jp/lp/kensetsu/pro/">
+<link rel="canonical" href="https://reflame.co.jp/lp/kensetsu/pro/">
+<meta property="og:image" content="https://reflame.co.jp/lp/kensetsu/pro/assets/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="assets/ks_01.webp" fetchpriority="high">
+
+<!-- Google Tag Manager（建設LPと同一コンテナ） -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5KH7WRCP');</script>
+<!-- End Google Tag Manager -->
+
+<style>
+/* ============================================================
+   ケンセツキャリア 無料キャリア相談LP ── フォーム直行型
+   /lp/kensetsu/entry/   （2026-09-21 新規）
+   ------------------------------------------------------------
+   ■ 何を参考にしたか
+     lp.levjob.jp（レバジョブ／施工管理）の「形式」だけを移植した。
+       ヘッダー → FV → ステップフォーム → 離脱ポップアップ の4パーツ構成。
+       訴求セクション（悩み・理由・流れ）を一切持たず、FV直下がフォーム。
+     ★コピー・実績数字は一切流用していない。参考LPの
+       「残業20時間以下」「高年収・ホワイト非公開求人が多数」は
+       先方の実績に紐づく表示で、当社が裏付けなく使うと景表法違反になるため。
+       当社の数字は ks_01 に焼き込まれた3点のみ（※1〜3の注釈はフッター直上に常設）。
+
+   ■ /lp/kensetsu/ex/ との関係
+     同じ建設・関西の受け口を「訴求セクションあり（ex）」と
+     「フォーム直行（本LP）」の2形態で並走させる A/B のB面。
+     FV画像（ks_01）とCTAボタン（ks_button）は ex と共通の実体をコピーして使用。
+     色・角丸・フォントなど視覚言語は ex と揃えてある（差分を構造だけにするため）。
+
+   ■ ex から変えた点
+     ・ks_02〜04（お悩み／3つの理由／流れ）と FAQ を載せない
+     ・追尾CTAバーを載せない（フォームがページそのものなので不要）
+     ・フォームを 4ステップ → **3ステップ**へ（2026-09-21 本人指示で質問を絞り込み。
+       STEP1=経験職種(複数)＋建設系資格の有無／STEP2=生まれた年＋希望勤務地(47都道府県
+       プルダウン・地域グループ付き)／STEP3=姓・名・電話・メール(必須)。
+       「直近のご経験」「ご希望の職種」「時期」は削除した）
+     ・離脱ポップアップを追加（参考LPの技法）
+============================================================ */
+:root{
+  /* 建設事業部カラー ── skill reflame-brand-colors-override（2026-09-18 実値）が正 */
+  --ks-start:#A7E63E;
+  --ks-mid:#54BC41;
+  --ks-end:#009245;
+  --ks-ontext:#00823D;   /* 白背景に置く文字はこれ。#009245 は 4.04:1 で AA 未達 */
+  --grad-ks:linear-gradient(135deg,var(--ks-start) 0%,var(--ks-mid) 50%,var(--ks-end) 100%);
+
+  /* UIクローム（ex／サービスページ /service/kensetsu-career/ と同値） */
+  --green:#069744;
+  --green-dark:#006a34;
+  --green-soft:#edf8ef;
+  --ink:#16251c;
+  --muted:#51625d;
+  --line:#e4eee8;
+  --shadow:0 10px 24px rgba(0,65,35,.09);
+
+  /* CTAのオレンジ（ks_button.webp から採色）。
+     ⚠ 鉄則7（建設=緑135deg）との不一致は ex から持ち越しの未決事項。
+        緑へ戻すときは、この2行を --grad-ks と緑系シャドウに差し替えるだけで済む。 */
+  --grad-cta:linear-gradient(135deg,#FB9B22 0%,#F64705 100%);
+  --cta-shadow:0 6px 16px rgba(246,71,5,.28);
+
+  --stack:750px;      /* 素材が1500px＝2倍解像度のSP設計。等倍は750px */
+  --gutter:18px;
+  --r:14px;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+/* ⚠ `display:flex/block` を当てた要素は、el.hidden=true にしてもUAの [hidden]{display:none}
+   に勝ってしまい消えない（完了画面でステップドットが残る事故が2026-09-21に発生）。
+   明示的に打ち消しておく。 */
+[hidden]{display:none!important;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,"system-ui","Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+  background:#dfeee3;color:var(--ink);
+  font-size:16px;line-height:1.75;font-feature-settings:"palt" 1;
+}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+a{color:var(--green-dark);text-underline-offset:2px;transition:opacity .3s ease;}
+a:hover{opacity:.72;}
+:focus-visible{outline:3px solid #004d26;outline-offset:2px;border-radius:3px;}
+.skip{position:absolute;left:8px;top:-60px;z-index:999;background:#fff;color:var(--green-dark);
+  padding:10px 16px;border-radius:8px;font-weight:700;transition:top .2s;}
+.skip:focus{top:8px;}
+
+/* ============================================================
+   ① ヘッダー（追尾）
+   参考LPと同じ「ロゴ＋完全無料＋電話」の帯。
+   ロゴは FV画像 ks_01 の上端に焼き込まれているため二重に置かず、
+   文字だけの細帯にしてある。
+   ⚠ 電話CTAは当社の受電番号が未確定のため置いていない（下のコメント参照）。
+============================================================ */
+.topbar{position:sticky;top:0;z-index:80;background:var(--grad-ks);color:#fff;}
+.topbar .inner{max-width:var(--stack);margin:0 auto;padding:9px var(--gutter);
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.topbar p{font-size:14px;font-weight:800;line-height:1.5;letter-spacing:.01em;
+  text-shadow:0 1px 2px rgba(0,60,25,.25);}
+.topbar b{font-size:15px;background:#fff;color:#D9531E;border-radius:4px;
+  padding:1px 8px;margin-right:4px;text-shadow:none;}
+/* 電話CTAを出すときはこのブロックを .topbar .inner の中に足す。
+   番号が確定するまでは出さない（誤番号の掲出は受電機会の損失そのもの）。
+<a class="tel" href="tel:0000000000" data-cta="tel">
+  <span>ご登録はお電話でも!</span><b>00-0000-0000</b>
+</a>
+.tel{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:800;}
+*/
+
+/* ============================================================
+   ② ファーストビュー
+   ks_01.webp（1500×1722＝750px設計の2倍解像度）。
+   下端に ks_button を重ねている。**素材の中身が途切れて余白になるのは y=1331（77.3%）から**
+   （2026-09-21 に行ごとの画素を実測。台帳にあった「y=1416〜」は余白帯の一部しか見ていなかった）。
+   ボタンは 1200×222 を幅80%で置くので画像高の約12.9%を占める。置ける範囲は top 77.5%〜87.1%。
+   現在 81%（上に約3.7%・下に約6.1%の余白）。※2026-09-21 本人指示で 84.7% → 81% へ引き上げ。
+   ※参考LPにはFVボタンが無い（FV直下がフォームなので不要）。
+     本LPは余白帯が空白になるのを避けるため残した。外すなら
+     <a class="hot-img"> の1ブロックを消すだけでよい。
+============================================================ */
+.stack{max-width:var(--stack);margin:0 auto;background:#fff;
+  box-shadow:0 0 40px rgba(0,50,25,.10);overflow:hidden;}
+.shot{position:relative;line-height:0;}
+.shot > img{width:100%;height:auto;}
+.hot-img{position:absolute;left:var(--l);top:var(--t);width:var(--w);height:auto;
+  display:block;line-height:0;-webkit-tap-highlight-color:transparent;
+  transition:transform .18s ease;}
+.hot-img:hover{opacity:1;transform:translateY(-2px);}
+.hot-img:active{transform:translateY(0);}
+.hot-img img{width:100%;height:auto;}
+
+/* ============================================================
+   ③ フォーム
+============================================================ */
+.sec{max-width:var(--stack);margin:0 auto;padding:30px var(--gutter) 46px;background:#fff;}
+.formhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px;}
+/* 2026-09-21 本人指示で1行固定（改行なし）。バッジと同居するので文字サイズで収める。
+   14px下限は守る（スマホ最低フォント14px）。 */
+.formhead h2{font-size:clamp(16px,4.6vw,24px);line-height:1.35;font-weight:900;letter-spacing:-.01em;
+  white-space:nowrap;}
+@media (max-width:359px){ .formhead h2{font-size:14px;} .formhead{gap:8px;} }
+.formhead h2 .accent{color:var(--ks-ontext);}
+.sec60{flex:none;display:grid;place-items:center;text-align:center;
+  background:var(--grad-ks);color:#fff;border-radius:12px;
+  padding:6px 10px;font-weight:900;line-height:1.2;
+  box-shadow:0 4px 12px rgba(0,105,52,.22);}
+.sec60 .s{display:block;font-size:14px;}
+.sec60 .n{display:block;font-size:19px;letter-spacing:.02em;}
+
+.formcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:clamp(18px,4.6vw,30px);}
+
+/* ステップドット（参考LPの常時表示型） */
+.dots{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:20px;}
+.dot{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:#e3eae5;color:#8b9a92;font-size:14px;font-weight:900;line-height:1;
+  transition:background-color .25s ease,color .25s ease;}
+.dot.done{background:var(--green);color:#fff;}
+.dot.now{background:var(--ks-end);color:#fff;box-shadow:0 0 0 4px rgba(0,146,69,.16);}
+.dash{flex:1 1 auto;height:2px;max-width:22px;background:#e3eae5;transition:background-color .25s ease;}
+.dash.done{background:var(--green);}
+.pbar-title{display:block;text-align:center;font-size:14px;font-weight:800;color:var(--muted);
+  margin-bottom:20px;}
+
+.q{display:grid;gap:22px;}
+.q-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.q-head .lb{font-size:16px;font-weight:800;line-height:1.5;}
+.q-head .lb .star{color:#D9531E;margin-right:2px;}
+.q-note{font-size:14px;font-weight:700;color:var(--muted);}
+.badge-req{font-size:14px;font-weight:800;color:#fff;background:#D9531E;border-radius:4px;
+  padding:0 7px;line-height:1.6;}
+.qbox{background:var(--green-soft);border-radius:10px;padding:13px 15px;margin-bottom:14px;}
+.qbox .q-head{margin-bottom:0;}
+
+/* カード選択肢 */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.grid.g1{grid-template-columns:1fr;}
+.grid label{display:block;position:relative;}
+.grid input{position:absolute;opacity:0;width:1px;height:1px;font-size:16px;}
+.grid span{display:flex;align-items:center;justify-content:center;text-align:center;
+  min-height:56px;padding:10px 12px;border:1.5px solid #d6e0da;border-radius:10px;background:#fff;
+  font-size:15px;font-weight:700;line-height:1.45;cursor:pointer;
+  transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease;}
+.grid span:hover{border-color:var(--green);}
+.grid input:checked + span{border-color:var(--green);border-width:2px;background:var(--green-soft);
+  box-shadow:0 2px 8px rgba(6,151,68,.14);}
+.grid input:focus-visible + span{outline:3px solid #004d26;outline-offset:2px;}
+.after-note{margin-top:10px;text-align:right;font-size:14px;font-weight:700;color:var(--muted);}
+
+.field{display:grid;gap:5px;}
+.field .lb{font-size:15px;font-weight:800;display:flex;align-items:center;gap:7px;}
+/* 姓・名の2カラム（2026-09-21 分割） */
+.namerow{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+/* プルダウン（生年・希望勤務地）。矢印は自前で描く */
+.sel{position:relative;}
+.sel select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;}
+.sel::after{content:"";position:absolute;right:17px;top:50%;margin-top:-5px;width:9px;height:9px;
+  border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg);
+  pointer-events:none;}
+.sel select:invalid,.sel select[data-empty="1"]{color:#a4b1aa;}
+.sel select optgroup{color:var(--muted);font-size:14px;font-weight:800;}
+.sel select option{color:var(--ink);font-size:16px;font-weight:400;}
+.req,.any{font-size:14px;font-weight:800;color:#fff;border-radius:4px;padding:0 7px;line-height:1.6;}
+.req{background:#D9531E;}
+.any{background:#8b9a92;}
+.ctl{width:100%;min-height:52px;border:1px solid #d6e0da;border-radius:10px;
+  padding:13px 15px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;line-height:1.5;}
+.ctl::placeholder{color:#a4b1aa;}
+.ctl:focus{outline:none;border:2px solid var(--green);padding:12px 14px;}
+.ctl[aria-invalid="true"]{border:2px solid #C0392B;padding:12px 14px;}
+.err,.err-line{font-size:14px;font-weight:700;color:#C0392B;}
+.err-line{margin-top:8px;display:none;}
+.err-line.show{display:block;}
+
+.btn-next{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;min-height:62px;margin-top:4px;border:0;border-radius:999px;
+  background:var(--grad-cta);color:#fff;font-size:clamp(16px,4.4vw,18px);font-weight:900;
+  letter-spacing:.02em;box-shadow:var(--cta-shadow);
+  transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(246,71,5,.38);}
+.btn-next:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-next .arw{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;
+  background:#fff;color:#F64705;font-size:15px;line-height:1;}
+.btn-back{display:block;width:100%;margin-top:12px;padding:12px;border:0;background:none;
+  color:var(--muted);font-size:15px;font-weight:700;text-decoration:underline;
+  text-underline-offset:3px;}
+.btn-back:hover{color:var(--green-dark);}
+.safe-note{margin-top:18px;text-align:center;font-size:14px;color:var(--muted);}
+.consent{margin-top:14px;text-align:center;font-size:14px;color:var(--muted);line-height:1.7;}
+
+.thanks{text-align:center;padding:14px 0;}
+.thanks .tick{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;
+  display:grid;place-items:center;font-size:31px;margin:0 auto 16px;}
+.thanks h3{font-size:20px;font-weight:900;margin-bottom:12px;}
+.thanks p{font-size:15px;color:var(--muted);line-height:1.85;}
+.booked-dt{font-size:18px!important;font-weight:900;color:var(--ink)!important;margin-bottom:14px;}
+
+/* ---------- カレンダー（自前実装・APIは日程調整ツールを利用） ---------- */
+.cal-intro{text-align:center;margin-bottom:22px;}
+.ci-thanks{font-size:clamp(17px,4.6vw,20px);font-weight:900;color:var(--ks-ontext);margin-bottom:10px;}
+.ci-lead{font-size:15px;font-weight:700;line-height:1.7;}
+.ci-note{font-size:14px;color:var(--muted);margin-top:6px;}
+.cal-load,.cal-empty{text-align:center;font-size:15px;color:var(--muted);line-height:1.85;padding:22px 0;}
+.cal-empty b{color:var(--ks-ontext);font-weight:900;}
+/* 日時選択ボックス＋5日グリッド（2026-10-05 本人指示で /lp/kensetsu/step/ と同じ構成へ。配色はこのLPの緑）
+   1画面5日・受付10日＝2ページ（‹ › で送る）。予約可=枠線／不可=グレー */
+.cal-box{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow);}
+.cal-hd{background:var(--grad-ks);color:#fff;padding:14px 16px;}
+.cal-hd .dur{display:inline-block;font-size:14px;font-weight:700;background:rgba(255,255,255,.24);
+  border-radius:999px;padding:2px 12px;margin-bottom:6px;}
+.cal-hd h3{font-size:16px;font-weight:900;line-height:1.5;}
+.cal-body{padding:16px 12px;}
+.wk-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 12px;}
+.wk-ttl{font-size:15px;font-weight:900;}
+.wk-nav{display:flex;align-items:center;gap:6px;}
+.wk-btn{width:36px;height:36px;border:1px solid #d6e0da;border-radius:8px;background:#fff;
+  font-size:18px;font-weight:700;color:var(--muted);line-height:1;}
+.wk-btn:disabled{opacity:.35;cursor:default;}
+.wk-lbl{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:96px;text-align:center;}
+.wk-grid{display:flex;flex-direction:column;gap:6px;}
+.wk-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;}
+.wk-head{text-align:center;padding:4px 0 8px;border-bottom:2px solid var(--line);margin-bottom:2px;}
+.wk-day{display:block;font-size:18px;font-weight:900;line-height:1.2;}
+.wk-dow{display:block;font-size:14px;color:var(--muted);}
+.wk-head.sat .wk-dow{color:#1565C0;} .wk-head.sun .wk-dow{color:#d84343;}
+.wk-head.off .wk-day,.wk-head.off .wk-dow{color:#b9c5bf;}
+.wk-cell{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0;border-radius:8px;
+  font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.03em;white-space:nowrap;}
+.wk-cell.open{background:#fff;border:1.5px solid #9fd3ad;color:var(--ks-ontext);cursor:pointer;
+  transition:border-color .18s ease,background-color .18s ease;}
+.wk-cell.open:hover{background:var(--green-soft);border-color:var(--green);}
+.wk-cell.open:active{background:#dcf1e1;}
+.wk-cell.closed{background:#f2f5f3;color:#c3cdc7;border:1.5px solid transparent;}
+.wk-hint{font-size:14px;color:var(--muted);margin-top:12px;}
+/* 幅359px以下（iPhone SE初代など）は時刻14pxがセルに収まらない（320pxでセル39px＜必要41px）。
+   文字は縮めず、ボックスをカードの余白側へ広げ＋間隔を詰めて収める（320pxでセル約47px） */
+@media (max-width:359px){
+  .cal-box{margin:0 -10px;}
+  .cal-body{padding:14px 8px;}
+  .wk-row{gap:4px;}
+}
+.nw{white-space:nowrap;}
+.cal-confirm{text-align:center;padding:8px 0;}
+.cc-q{font-size:15px;font-weight:700;color:var(--muted);margin-bottom:8px;}
+.cc-dt{font-size:clamp(19px,5.2vw,24px);font-weight:900;margin-bottom:20px;letter-spacing:.01em;}
+.thanks-mail{margin-bottom:20px;}
+.thanks-mail b{color:var(--ink);font-weight:800;word-break:break-all;}
+/* このあとの連絡（「050」または「070」から始まる番号）。着信拒否・不審番号扱いを減らすための明示 */
+.thanks-call{background:var(--green-soft);border:1px solid var(--line);border-radius:12px;
+  padding:16px 16px 18px;text-align:left;margin:0 0 18px;}
+.thanks-call .tc-lead{font-size:14px;font-weight:900;color:var(--ks-ontext);
+  text-align:center;margin-bottom:8px;letter-spacing:.02em;}
+.thanks-call .tc-body{font-size:15px;color:var(--ink);line-height:1.8;}
+.thanks-call .tc-body b{font-weight:900;color:var(--ks-ontext);
+  background:linear-gradient(transparent 62%,rgba(167,230,62,.55) 62%);padding:0 2px;}
+.thanks-close{font-size:14px;}
+@media (min-width:420px){ .br-sp{display:none;} }
+
+/* ============================================================
+   ④ 離脱ポップアップ（参考LPの技法）
+   ・PC = ビューポート上端からのマウスアウト
+   ・SP = 戻る操作の1回だけ横取り（history.pushState のダミー1段）
+   ・1セッション1回まで（sessionStorage）。出したら二度と出さない。
+   止めるときは JS 側の EXIT_POPUP を false にする。
+============================================================ */
+.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;
+  padding:20px;background:rgba(8,32,20,.55);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
+.modal.is-on{display:flex;}
+.modal-card{position:relative;width:100%;max-width:420px;background:#fff;border-radius:18px;
+  padding:26px 20px 22px;box-shadow:0 20px 50px rgba(0,40,20,.3);
+  animation:pop .24s ease-out;}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97);}to{opacity:1;transform:none;}}
+.modal-card h3{font-size:clamp(17px,4.6vw,20px);line-height:1.5;font-weight:900;text-align:center;
+  margin-bottom:16px;}
+.modal-card h3 .accent{color:var(--ks-ontext);}
+.modal-list{display:grid;gap:9px;margin-bottom:20px;}
+.modal-list li{list-style:none;display:flex;align-items:center;gap:10px;
+  border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;
+  font-size:15px;font-weight:700;line-height:1.5;background:var(--green-soft);}
+.modal-list .ck{flex:none;width:22px;height:22px;border-radius:50%;background:var(--green);
+  color:#fff;display:grid;place-items:center;font-size:14px;line-height:1;}
+.modal-cta{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:58px;
+  border:0;border-radius:999px;background:var(--grad-cta);color:#fff;font-size:17px;font-weight:900;
+  box-shadow:var(--cta-shadow);}
+.modal-close{position:absolute;right:10px;top:10px;width:36px;height:36px;border:0;border-radius:50%;
+  background:#eef3f0;color:var(--muted);font-size:17px;line-height:1;display:grid;place-items:center;}
+.modal-dismiss{display:block;width:100%;margin-top:10px;padding:10px;border:0;background:none;
+  color:var(--muted);font-size:14px;font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+
+/* ============================================================
+   注釈 / フッター
+============================================================ */
+.notes{max-width:var(--stack);margin:0 auto;background:#fff;
+  padding:0 var(--gutter) 30px;font-size:14px;line-height:1.75;color:var(--muted);}
+.notes li{list-style:none;text-indent:-2.9em;padding-left:2.9em;}
+
+footer{max-width:var(--stack);margin:0 auto;background:#fff;border-top:1px solid var(--line);
+  padding:26px var(--gutter) 34px;text-align:center;}
+.foot-nav{display:flex;gap:10px 18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.foot-nav a{font-size:14px;font-weight:700;color:var(--muted);text-decoration:none;}
+.copy{font-size:14px;color:#8b9a92;}
+.license{font-size:14px;color:#8b9a92;margin-top:4px;}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+[id]{scroll-margin-top:60px;}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5KH7WRCP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<a class="skip" href="#form">登録フォームへスキップ</a>
+
+<!-- ① ヘッダー -->
+<header class="topbar">
+  <div class="inner">
+    <p><b>完全無料</b>で求人をご紹介！</p>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ② ファーストビュー（/lp/kensetsu/ex/ と同一の ks_01） -->
+  <div class="stack">
+    <div class="shot">
+      <img src="assets/ks_01.webp" width="1500" height="1722" fetchpriority="high" decoding="async"
+           alt="ケンセツキャリア｜関西・建設業界特化の転職エージェント。建設業界のキャリアを、もっと前へ。建設業界の求人数5,000件以上、年収アップ実現率82.3%、未経験からの転職支援実績多数。">
+      <a class="hot-img" href="#form" data-cta="fv" aria-label="かんたん60秒で登録・無料でキャリア相談してみる"
+         style="--l:10%;--t:81%;--w:80%">
+        <img src="assets/ks_button.webp" width="1200" height="222" fetchpriority="high" decoding="async" alt="">
+      </a>
+    </div>
+  </div>
+
+  <!-- ③ フォーム（3ステップ・FV直下に置く＝このLPの本体） -->
+  <section class="sec" id="formsec">
+    <div class="formhead">
+      <h2>無料<span class="accent">キャリア相談</span>のお申し込み</h2>
+      <div class="sec60" aria-hidden="true"><span class="s">かんたん</span><span class="n">60秒</span></div>
+    </div>
+    <div class="formcard" id="form">
+      <div class="dots" id="dots" aria-hidden="true"></div>
+      <p class="pbar-title" id="pbarTitle">ご経験・資格</p>
+      <div id="stage" aria-live="polite"></div>
+      <p class="safe-note">入力された情報が公開されることはありません。</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- 実績数値の注釈（FV画像内の ※1〜3 に対応）。景表法対応のためフッター上に常設 -->
+<ul class="notes" aria-label="実績数値の注釈">
+  <li>※1 当社取扱いの建設業界求人数（2026年9月時点・非公開求人を含む）</li>
+  <li>※2 自社調べ／2026年8月実績</li>
+  <li>※3 未経験から建設業界へご転職された方の支援実績</li>
+</ul>
+
+<footer>
+  <nav class="foot-nav" aria-label="フッターメニュー">
+    <a href="https://reflame.co.jp/company/" target="_blank" rel="noopener">運営会社</a>
+    <a href="https://reflame.co.jp/terms/" target="_blank" rel="noopener">利用規約</a>
+    <a href="https://reflame.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>
+    <a href="https://reflame.co.jp/contact/" target="_blank" rel="noopener">お問い合わせ</a>
+  </nav>
+  <p class="copy">© 株式会社REFLAME All rights reserved.</p>
+  <p class="license">厚生労働大臣許可番号 27-ユ-303562</p>
+</footer>
+
+<!-- ④ 離脱ポップアップ -->
+<div class="modal" id="exitModal" role="dialog" aria-modal="true" aria-labelledby="exitTitle" hidden>
+  <div class="modal-card">
+    <button class="modal-close" id="exitClose" type="button" aria-label="閉じる">✕</button>
+    <h3 id="exitTitle">こんなことも、<br><span class="accent">相談だけ</span>でご利用いただけます</h3>
+    <ul class="modal-list">
+      <li><span class="ck" aria-hidden="true">✓</span>関西の非公開求人を見てみたい</li>
+      <li><span class="ck" aria-hidden="true">✓</span>いまの自分の市場価値を知りたい</li>
+      <li><span class="ck" aria-hidden="true">✓</span>今後のキャリアを相談したい</li>
+    </ul>
+    <button class="modal-cta" id="exitBack" type="button">入力に戻る<span aria-hidden="true">›</span></button>
+    <button class="modal-dismiss" id="exitDismiss" type="button">このまま閉じる</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   計測用のバリアントキー
+   FVコピーは画像に焼き込まれているため出し分けはできない。
+   広告ごとの着地を集計で分けるためにキーだけ拾う。
+   ① ?bid=  ② ?fv=  ③ utm_content からバナーID抽出  ④ default
+   （記法の割れ＝2026-09-15 の新卒と同じ。bid を既定・fv を互換で受ける）
+============================================================ */
+(function(){
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  var key=q('bid')||q('fv')||'';
+  if(!key){ var ad=q('utm_content'); if(ad){ var m=ad.match(/ks-[SVM]-\d{3}/i); if(m) key=m[0]; } }
+  key=key||'default';
+  window.__fvKey=key;
+  document.documentElement.setAttribute('data-fv',key);
+  try{ window.dataLayer=window.dataLayer||[];
+       window.dataLayer.push({event:'fv_view',lp:'kensetsu_pro',fv:key}); }catch(e){}
+})();
+</script>
+
+<script>
+/* ============================================================
+   3ステップフォーム
+   エンジンは /lp/kensetsu/ex/（soudan/index.html）＝元は
+   /lp/kensetsu/pro/（keikensha/lp.js・2026-08-24から本番稼働中）の移植。
+   ハッシュルーティング／飛び越し防止／form_step_view はそのまま。
+
+   ex（4ステップ）からの差分（2026-09-21 本人指示で確定）:
+     ・STEP1 =「ご経験（複数回答可・8択／未経験は排他）」＋「建設系の資格はお持ちですか（はい/いいえ）」
+     ・STEP2 =「生まれた年（西暦プルダウン）」＋「ご希望の勤務地（47都道府県・地域グループ付き
+       プルダウン）」。参考LPと同じ見せ方だが、並びは関西を先頭にしてある
+     ・STEP3 = 姓／名（分割）・電話番号・**メールアドレス必須**（ex は任意）
+     ・「直近のご経験」「ご希望の職種」「いつ頃の求人か（時期）」は削除
+   ⚠ 新項目（experiences／hasLicense／birthYear）は受け皿スプシとSFに対応列が無い。
+     GAS作成時に列を足すこと（詳細は 公開手順.md）。
+     age は birthYear から ex と同じ7バケットを導出して併送している（横断集計の互換用）。
+============================================================ */
+(function(){
+  'use strict';
+
+  /* ▼▼▼ 送信先＝SF日程調整ツールのAPIを直接叩く（2026-09-24 方式B）▼▼▼
+     embed.js は使わず、フォームもカレンダーも自前で描いて API だけ借りる。
+     → ステップ型・文言・CV発火位置・配色をすべて自前で決められる。
+     → 回答と個人情報を1回の /book で送るので、スプシ・GAS・自動返信メールは不要。
+     ⚠ CORS は https://reflame.co.jp にだけ開いている（手元のPCからは直接叩けない）。
+        手元での確認は中継サーバー経由で行う（手順は 公開手順.md）。
+     ⚠ payload のキーは枠 cc-ad-mk-02 の Form_Schema と一致させること。
+        ずらすと Field Mapping が効かず、SFに保存されない。 */
+  var API='https://designer.my.site.com/schedulingvforcesite/services/apexrest/booking/v1';
+  var LINK_ID='a1TQ800000Km7i1MAB';   /* 建設：広告用 / slug=cc-ad-mk-02 */
+  var WINDOW_DAYS=10;                 /* 枠側の「表示日数」と揃える */
+  /* ▲▲▲ ここまで ▲▲▲ */
+
+  var LP='kensetsu_pro';
+  var TOTAL=3;
+  var EXIT_POPUP=true;      /* 離脱ポップアップの ON/OFF */
+
+  /* ══════════════════════════════════════════
+     選択肢マスタ（2026-09-21 本人指示で全面改訂）
+     旧6ステップ（保有資格12択／直近の経験／希望職種／時期＋勤務地／年代／氏名）から
+       ・STEP1 を「経験職種（複数）＋ 建設系資格の有無（はい/いいえ）」へ
+       ・「直近のご経験」「ご希望の職種」「時期」を削除
+       ・生年と希望勤務地を1ステップに統合
+       ・姓名を分割、メールを必須化
+     の3ステップへ縮小した。
+  ══════════════════════════════════════════ */
+
+  /* 経験職種（複数回答可・「未経験」は排他）。
+     ※参考画像には職種ごとのイラストアイコンが付いているが、あれは先方サイトの
+       素材なので流用していない。アイコンを出すなら自社で用意して assets/ に足す。 */
+  var EXPERIENCE=[
+    '建築施工管理','土木施工管理',
+    '電気施工管理','設計',
+    '工事作業','設備管理',
+    'その他職種','未経験'
+  ];
+  var NO_EXPERIENCE='未経験';
+
+  /* 建設系の資格の有無（旧・資格12択の置き換え） */
+  var LICENSE_YN=['はい','いいえ'];
+
+  /* 生年（西暦）。18歳〜70歳を新しい順に。年が変わっても自動で追随する。 */
+  var THIS_YEAR=new Date().getFullYear();
+  var BIRTH_YEARS=(function(){
+    var a=[]; for(var y=THIS_YEAR-18; y>=THIS_YEAR-70; y--) a.push(String(y)); return a;
+  })();
+  /* ex（年代カード7択）との横断集計のため、生年から同じバケットを導出して両方送る */
+  function ageBucket(year){
+    if(!year) return '';
+    var a=THIS_YEAR-parseInt(year,10);
+    if(a<25) return '20代前半';
+    if(a<30) return '20代後半';
+    if(a<35) return '30代前半';
+    if(a<40) return '30代後半';
+    if(a<45) return '40代前半';
+    if(a<50) return '40代後半';
+    return '50代以上';
+  }
+
+  /* 希望勤務地＝47都道府県のプルダウン（参考LPと同じ地域グループ付き）。
+     ⚠ 並びは参考LPの「関東が先」ではなく **関西を先頭**にしてある。
+        ケンセツキャリアは関西特化で、FV画像にも「関西・建設業界特化」と焼き込まれているため。 */
+  var PREFS=[
+    ['関西',['大阪府','兵庫県','京都府','滋賀県','奈良県','和歌山県']],
+    ['関東',['東京都','神奈川県','埼玉県','千葉県','茨城県','栃木県','群馬県']],
+    ['北海道・東北',['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県']],
+    ['中部',['新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県']],
+    ['中国',['鳥取県','島根県','岡山県','広島県','山口県']],
+    ['四国',['徳島県','香川県','愛媛県','高知県']],
+    ['九州・沖縄',['福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県']]
+  ];
+
+  var TITLES={1:'ご経験・資格',2:'生まれた年・ご希望の勤務地',3:'お名前・ご連絡先'};
+
+  var $=function(s,c){ return (c||document).querySelector(s); };
+  var $$=function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var data={experiences:[]};
+  var sent=false;
+  var stage=$('#stage');
+
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function normTel(v){
+    return (v||'').replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);})
+                  .replace(/[^0-9]/g,'');
+  }
+
+  /* ── ステップドット（6個・参考LPの常時表示型） ── */
+  function setBar(step){
+    var h='';
+    for(var i=1;i<=TOTAL;i++){
+      var cls=i<step?'dot done':(i===step?'dot now':'dot');
+      h+='<span class="'+cls+'">'+(i<step?'✓':i)+'</span>';
+      if(i<TOTAL) h+='<span class="dash'+(i<step?' done':'')+'"></span>';
+    }
+    $('#dots').innerHTML=h;
+    $('#pbarTitle').textContent=step+' / '+TOTAL+'　'+TITLES[step];
+  }
+  function render(html){ stage.innerHTML=html; }
+
+  /* 初回描画ではスクロールしない（CTAから来たときだけ寄せる） */
+  var interacted=false;
+  function scrollToForm(){
+    if(!interacted) return;
+    $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+
+  /* 単一選択カード。auto=true なら選んだ瞬間に次へ（参考LPの挙動） */
+  function optionGrid(name,list,checked,cls){
+    return '<div class="grid '+(cls||'')+'">'+list.map(function(v,i){
+      var id=name+'_'+i;
+      return '<label for="'+id+'"><input type="radio" id="'+id+'" name="'+name+'" value="'+esc(v)+'"'+
+             (checked===v?' checked':'')+'><span>'+esc(v)+'</span></label>';
+    }).join('')+'</div>';
+  }
+  function checkGrid(name,list,checkedArr,cls){
+    checkedArr=checkedArr||[];
+    return '<div class="grid '+(cls||'')+'">'+list.map(function(v,i){
+      var id=name+'_'+i;
+      return '<label for="'+id+'"><input type="checkbox" id="'+id+'" name="'+name+'" value="'+esc(v)+'"'+
+             (checkedArr.indexOf(v)>=0?' checked':'')+'><span>'+esc(v)+'</span></label>';
+    }).join('')+'</div>';
+  }
+  function picked(name){ var el=$('input[name="'+name+'"]:checked'); return el?el.value:''; }
+  function pickedAll(name){
+    return $$('input[name="'+name+'"]:checked').map(function(el){ return el.value; });
+  }
+  function showErr(id,bad){ $(id).classList.toggle('show',bad); return !bad; }
+  function autoAdvance(name,next,assign){
+    $$('input[name="'+name+'"]').forEach(function(el){
+      el.addEventListener('change',function(){
+        assign(el.value); interacted=true;
+        setTimeout(function(){ nav(next); }, reduce?0:140);
+      });
+    });
+  }
+
+  /* ══════════ STEP 1 / 3 　ご経験（複数選択）＋ 建設系資格の有無 ══════════ */
+  function step1(){
+    setBar(1);
+    render(
+      '<div class="q">'+
+        '<div>'+
+          '<div class="qbox"><div class="q-head">'+
+            '<span class="lb"><span class="star">*</span>ご経験を教えて下さい</span>'+
+            '<span class="q-note">（複数回答可）</span>'+
+          '</div></div>'+
+          checkGrid('exp',EXPERIENCE,data.experiences)+
+          '<p class="err-line" id="e1a">当てはまるものを選択してください</p>'+
+        '</div>'+
+        '<div>'+
+          '<div class="qbox"><div class="q-head">'+
+            '<span class="lb"><span class="star">*</span>建設系の資格はお持ちですか？</span>'+
+          '</div></div>'+
+          optionGrid('lic',LICENSE_YN,data.hasLicense)+
+          '<p class="err-line" id="e1b">どちらかを選択してください</p>'+
+        '</div>'+
+      '</div>'+
+      '<button class="btn-next" id="next1" type="button">次へ進む <span class="arw" aria-hidden="true">›</span></button>'
+    );
+    /* 「未経験」は他の経験と排他 */
+    $$('input[name="exp"]').forEach(function(el){
+      el.addEventListener('change',function(){
+        if(el.value===NO_EXPERIENCE && el.checked){
+          $$('input[name="exp"]').forEach(function(o){ if(o!==el) o.checked=false; });
+        }else if(el.checked){
+          $$('input[name="exp"]').forEach(function(o){ if(o.value===NO_EXPERIENCE) o.checked=false; });
+        }
+        if(pickedAll('exp').length) showErr('#e1a',false);
+      });
+    });
+    $$('input[name="lic"]').forEach(function(el){
+      el.addEventListener('change',function(){ showErr('#e1b',false); });
+    });
+    $('#next1').onclick=function(){
+      var ex=pickedAll('exp'), lic=picked('lic');
+      var okE=showErr('#e1a',ex.length===0), okL=showErr('#e1b',!lic);
+      if(!okE||!okL) return;
+      data.experiences=ex; data.hasLicense=lic; interacted=true; nav(2);
+    };
+    scrollToForm();
+  }
+
+  /* ══════════ STEP 2 / 3 　生まれた年 ＋ ご希望の勤務地 ══════════
+     どちらも参考LPと同じプルダウン形式。勤務地は地域グループ付き（関西が先頭）。 */
+  function step2(){
+    setBar(2);
+    function opts(list,cur,ph){
+      return '<option value=""'+(cur?'':' selected')+' disabled>'+ph+'</option>'+
+        list.map(function(v){
+          return '<option value="'+esc(v)+'"'+(cur===v?' selected':'')+'>'+esc(v)+'</option>';
+        }).join('');
+    }
+    function prefOpts(cur){
+      return '<option value=""'+(cur?'':' selected')+' disabled>都道府県</option>'+
+        PREFS.map(function(g){
+          return '<optgroup label="'+esc(g[0])+'">'+g[1].map(function(v){
+            return '<option value="'+esc(v)+'"'+(cur===v?' selected':'')+'>'+esc(v)+'</option>';
+          }).join('')+'</optgroup>';
+        }).join('');
+    }
+    render(
+      '<div class="q">'+
+        '<div>'+
+          '<div class="qbox"><div class="q-head">'+
+            '<span class="lb"><span class="star">*</span>生まれた年を教えてください</span>'+
+          '</div></div>'+
+          '<div class="sel"><select class="ctl" id="f-birth" aria-describedby="e2a">'+
+            opts(BIRTH_YEARS,data.birthYear,'西暦')+
+          '</select></div>'+
+          '<p class="err-line" id="e2a">生まれた年を選択してください</p>'+
+        '</div>'+
+        '<div>'+
+          '<div class="qbox"><div class="q-head">'+
+            '<span class="lb"><span class="star">*</span>ご希望の勤務地を教えてください</span>'+
+          '</div></div>'+
+          '<div class="sel"><select class="ctl" id="f-area" aria-describedby="e2b">'+
+            prefOpts(data.area)+
+          '</select></div>'+
+          '<p class="err-line" id="e2b">ご希望の勤務地を選択してください</p>'+
+        '</div>'+
+      '</div>'+
+      '<button class="btn-next" id="next2" type="button">次へ進む <span class="arw" aria-hidden="true">›</span></button>'+
+      '<button class="btn-back" id="back2" type="button">← 前に戻る</button>'
+    );
+    /* 未選択の間はプレースホルダ色にする（CSS の [data-empty] と対） */
+    ['#f-birth','#f-area'].forEach(function(sel){
+      var el=$(sel);
+      function paint(){ el.setAttribute('data-empty', el.value?'0':'1'); }
+      paint();
+      el.addEventListener('change',function(){ paint(); });
+    });
+    $('#f-birth').addEventListener('change',function(){ showErr('#e2a',false); });
+    $('#f-area').addEventListener('change',function(){ showErr('#e2b',false); });
+    $('#next2').onclick=function(){
+      var b=$('#f-birth').value, a=$('#f-area').value;
+      var okB=showErr('#e2a',!b), okA=showErr('#e2b',!a);
+      if(!okB||!okA) return;
+      data.birthYear=b; data.area=a; nav(3);
+    };
+    $('#back2').onclick=function(){ nav(1); };
+    scrollToForm();
+  }
+
+  /* ══════════ STEP 3 / 3 　お名前・ご連絡先 ══════════
+     2026-09-21: 姓と名を分割／メールアドレスを必須化（本人指示） */
+  function step3(){
+    setBar(3);
+    prefetchSlots();   /* 最終ステップに入ったら空き枠を裏で取り始める（2026-10-05） */
+    render(
+      '<div class="q">'+
+        '<div class="field">'+
+          '<label class="lb" for="f-last">お名前<span class="req">必須</span></label>'+
+          '<div class="namerow">'+
+            '<input class="ctl" id="f-last" type="text" autocomplete="family-name" placeholder="姓（例）山田" '+
+            'value="'+esc(data.lastName||'')+'" aria-label="姓" aria-describedby="e-name">'+
+            '<input class="ctl" id="f-first" type="text" autocomplete="given-name" placeholder="名（例）太郎" '+
+            'value="'+esc(data.firstName||'')+'" aria-label="名" aria-describedby="e-name">'+
+          '</div>'+
+          '<p class="err err-line" id="e-name">姓・名の両方をご入力ください</p>'+
+        '</div>'+
+        '<div class="field">'+
+          '<label class="lb" for="f-tel">電話番号<span class="req">必須</span></label>'+
+          '<input class="ctl" id="f-tel" type="tel" inputmode="numeric" autocomplete="tel" '+
+          'placeholder="例）09012345678" value="'+esc(data.tel||'')+'" aria-describedby="e-tel">'+
+          '<p class="err err-line" id="e-tel">電話番号を10〜11桁でご入力ください</p>'+
+        '</div>'+
+        '<div class="field">'+
+          '<label class="lb" for="f-email">メールアドレス<span class="req">必須</span></label>'+
+          '<input class="ctl" id="f-email" type="email" inputmode="email" autocomplete="email" '+
+          'placeholder="例）taro@example.com" value="'+esc(data.email||'')+'" aria-describedby="e-email">'+
+          '<p class="err err-line" id="e-email">メールアドレスをご入力ください</p>'+
+        '</div>'+
+      '</div>'+
+      '<button class="btn-next" id="submitBtn" type="button">'+
+        '<span class="label">無料でキャリア相談してみる</span><span class="arw" aria-hidden="true">›</span>'+
+      '</button>'+
+      '<button class="btn-back" id="back3" type="button">← 前に戻る</button>'+
+      '<p class="consent">送信をもって'+
+        '<a href="https://reflame.co.jp/terms/" target="_blank" rel="noopener">利用規約</a>・'+
+        '<a href="https://reflame.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>'+
+        'に同意したものとみなします。</p>'
+    );
+
+    function mark(inputSels,errSel,bad){
+      inputSels.forEach(function(s){ $(s).setAttribute('aria-invalid',bad?'true':'false'); });
+      $(errSel).classList.toggle('show',bad);
+      return !bad;
+    }
+    function validate(focus){
+      var ok=true, first=null;
+      var last=$('#f-last').value.trim(), fst=$('#f-first').value.trim();
+      var tel=normTel($('#f-tel').value);
+      var em=$('#f-email').value.trim();
+      if(!mark(['#f-last','#f-first'],'#e-name', !(last&&fst))){
+        ok=false; first=first||(last?$('#f-first'):$('#f-last'));
+      }
+      /* exと同じく10〜11桁許容（関西の固定電話 06 を弾かないため。proは携帯のみ） */
+      if(!mark(['#f-tel'],'#e-tel', !(tel.length>=10&&tel.length<=11))){ ok=false; first=first||$('#f-tel'); }
+      /* 2026-09-21 本人指示で必須化（exは任意） */
+      if(!mark(['#f-email'],'#e-email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em))){ ok=false; first=first||$('#f-email'); }
+      if(!ok&&focus&&first) first.focus();
+      return ok;
+    }
+    ['#f-last','#f-first','#f-tel','#f-email'].forEach(function(sel){
+      $(sel).addEventListener('blur',function(){
+        if(this.getAttribute('aria-invalid')==='true') validate(false);
+      });
+    });
+    /* メール欄を離れた瞬間に先行登録（送信まで進まず離脱した人を拾う） */
+    $('#f-email').addEventListener('blur',function(){
+      data.lastName =$('#f-last').value.trim();
+      data.firstName=$('#f-first').value.trim();
+      data.tel      =normTel($('#f-tel').value);
+      data.email    =$('#f-email').value.trim();
+      capture(false);
+    });
+
+    $('#submitBtn').onclick=function(){
+      if(sent) return;
+      if(!validate(true)) return;
+      data.lastName=$('#f-last').value.trim();
+      data.firstName=$('#f-first').value.trim();
+      data.tel=normTel($('#f-tel').value);
+      data.email=$('#f-email').value.trim();
+      sent=true;
+      this.disabled=true;
+      this.querySelector('.label').textContent='送信中…';
+      complete();
+    };
+    $('#back3').onclick=function(){ nav(2); };
+    scrollToForm();
+  }
+
+
+  /* ══════════ 送信・計測・予約 ══════════ */
+
+  /* 流入計測。embed.js の tracking() と同じ形で送る（サーバー側の解釈を変えないため）。
+     _fbp/_fbc は Meta のサーバー送信(CAPI)で使われるので必ず載せる。 */
+  function tracking(){
+    var p; try{ p=new URLSearchParams(location.search); }catch(e){ return {}; }
+    var t={};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){
+      if(p.get(k)) t[k]=p.get(k);
+    });
+    if(p.get('aff_id')||p.get('aff')) t.aff_id=p.get('aff_id')||p.get('aff');
+    if(p.get('cid')) t.cid=p.get('cid');
+    ['ls_major','ls_mid','ls_sub','ls_detail','ls_touch','campaign2'].forEach(function(k){
+      if(p.get(k)) t[k]=p.get(k);
+    });
+    var all={}; p.forEach(function(v,k){ if(k&&v) all[k]=v; });
+    if(Object.keys(all).length) t.params=all;
+    t.lp=p.get('lp')||location.href;
+    try{
+      var ck={},c=document.cookie||'';
+      var m1=c.match(/(?:^|; )_fbp=([^;]+)/); if(m1) ck.fbp=decodeURIComponent(m1[1]);
+      var m2=c.match(/(?:^|; )_fbc=([^;]+)/); if(m2) ck.fbc=decodeURIComponent(m2[1]);
+      var m3=c.match(/(?:^|; )_ttp=([^;]+)/); if(m3) ck.ttp=decodeURIComponent(m3[1]);
+      if(p.get('fbclid')) ck.fbclid=p.get('fbclid');
+      if(p.get('ttclid')) ck.ttclid=p.get('ttclid');
+      if(navigator.userAgent) ck.ua=String(navigator.userAgent).slice(0,512);
+      if(Object.keys(ck).length) t.click=ck;
+    }catch(e){}
+    return t;
+  }
+
+  /* SFへ渡す回答。キーは枠 cc-ad-mk-02 の Form_Schema と1:1（変えると保存されない）。
+     field5 の保存先は経験職種_フリーテキストなので、複数選択を「｜」で連結して送れる。 */
+  function answersSF(){
+    return {
+      LastName : data.lastName||'',
+      FirstName: data.firstName||'',
+      Email    : data.email||'',
+      field4   : data.tel||'',
+      field5   : (data.experiences||[]).join('｜'),
+      field6   : data.hasLicense||'',
+      field7   : data.birthYear||'',
+      field8   : data.area||''
+    };
+  }
+
+  /* ══════════ 途中離脱者をSFに残す（/capture） ══════════
+     embed.js の captureOnEmail と同じ役割。**メール欄を離れた瞬間**にSFコンタクトを先行作成する。
+     これが無いと「フォームは完了したが日時を選ばず離脱」した人がSFに一切残らない
+     （方式Bは /book でしか書き込まないため）。枠 cc-ad-mk-02 は captureOnEmail:true なので使える。
+     ⚠ 失敗しても**絶対にユーザーの操作を止めない**（握りつぶす）。予約本体は /book が担保する。 */
+  var captured=null;
+  function capture(force){
+    try{
+      var em=String(data.email||'').trim().toLowerCase();
+      if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(em)) return;
+      if(!force && em===captured) return;
+      captured=em;
+      var snap={}, a=answersSF();
+      Object.keys(a).forEach(function(k){ if(a[k]!=null&&a[k]!=='') snap[k]=a[k]; });
+      snap.Email=em;
+      api('/capture',{method:'POST',body:JSON.stringify({
+        linkId:LINK_ID, payload:snap, tracking:tracking()
+      })}).then(function(){
+        try{ window.dataLayer=window.dataLayer||[];
+             window.dataLayer.push({event:'lead_capture',lp:LP,fv:(window.__fvKey||'default')}); }catch(e){}
+      }).catch(function(){ /* 失敗は無視。ユーザーには見せない */ });
+    }catch(e){}
+  }
+
+  function api(path,opts){
+    opts=opts||{};
+    /* GETに Content-Type を付けるとプリフライト(OPTIONS)が毎回飛ぶ。
+       空き枠は10日分叩くので、付けないだけで往復が半分になる。 */
+    var head={}; if(opts.body) head['Content-Type']='application/json';
+    return fetch(API+path,Object.assign({credentials:'omit'},opts,{headers:head}))
+      .then(function(r){
+      return r.json().catch(function(){ throw new Error('サーバーから不正な応答が返りました'); })
+        .then(function(j){
+          if(!j||j.ok!==true) throw new Error((j&&j.error)||'通信に失敗しました');
+          return j.data;
+        });
+    });
+  }
+
+  /* ★CVはここ（フォーム回答が終わった瞬間）。予約完了ではない。
+     GTMの既存トリガー36「lead_submit かつ /lp/kensetsu/pro」→ タグ40 Meta Pixel Lead が発火する。 */
+  function pushConversion(){
+    try{
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({
+        event:'lead_submit', lp:LP, fv:(window.__fvKey||'default'),
+        lp_age:ageBucket(data.birthYear), lp_area:data.area||'',
+        lp_birth_year:data.birthYear||'',
+        lp_experience:(data.experiences||[]).join('｜'),
+        lp_inexperienced:((data.experiences||[]).indexOf(NO_EXPERIENCE)>=0)?'1':'0',
+        lp_license:data.hasLicense||'',
+        utm_source:q('utm_source'), utm_medium:q('utm_medium'), utm_campaign:q('utm_campaign')
+      });
+    }catch(e){}
+  }
+
+  /* ══════════ カレンダー ══════════ */
+  var chosenIso=null, booking=false;
+
+  function ymd(d){
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  function jpDate(d){
+    var w=['日','月','火','水','木','金','土'][d.getDay()];
+    return (d.getMonth()+1)+'月'+d.getDate()+'日（'+w+'）';
+  }
+  function hhmm(iso){
+    var d=new Date(iso);
+    return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  }
+
+  /* ── 空き枠の取得（2026-10-05 /lp/kensetsu/step/ と同じ作りへ）──
+     ・先読み: 最終ステップ（#step3 氏名・連絡先）に入った時点で、最初の5日の空き枠を裏で取り始める。
+       入力中に取り終わるので、送信直後はキャッシュから即表示（cc-ad-mk-02 は担当1名で1日あたり約1.9秒）
+     ・グリッドは表示中の5日だけ取る。次の5日は「›」を押したときに取る
+     ・鮮度: 先読み結果は90秒で捨てる。古くても /book でサーバが空きを再検証するので二重予約にはならない
+     ・枠 cc-ad-mk-02 は「質問で振り分け」OFF（config gateEnabled:false・2026-10-05確認）＝ /gate は呼ばない */
+  var SLOT_TTL_MS=90000;
+  var slotCache={};
+  function fetchSlots(ds){
+    var hit=slotCache[ds];
+    if(hit && (Date.now()-hit.at)<SLOT_TTL_MS) return hit.promise;
+    var pr=api('/slots?linkId='+encodeURIComponent(LINK_ID)+'&date='+encodeURIComponent(ds));
+    pr.catch(function(){ delete slotCache[ds]; });   /* 失敗はキャッシュしない */
+    slotCache[ds]={at:Date.now(), promise:pr};
+    return pr;
+  }
+
+  /* 1画面＝DAYS_PER_VIEW日。受付期間は今日から WINDOW_DAYS 日（0〜9日目）＝2ページ。期間外は off（押せない・取りに行かない） */
+  var DAYS_PER_VIEW=5;
+  var W=['日','月','火','水','木','金','土'];
+  var weekOffset=0, weekSlots={};
+  function maxWeekOffset(){ return Math.ceil(WINDOW_DAYS/DAYS_PER_VIEW)-1; }
+  function weekDates(offset){
+    var today=new Date(); today.setHours(0,0,0,0);
+    var out=[];
+    for(var i=0;i<DAYS_PER_VIEW;i++){
+      var idx=offset*DAYS_PER_VIEW+i;
+      var d=new Date(today); d.setDate(d.getDate()+idx);
+      out.push({iso:ymd(d), day:d.getDate(), dow:W[d.getDay()], wd:d.getDay(), off:(idx>=WINDOW_DAYS)});
+    }
+    return out;
+  }
+
+  var prefetched=false;
+  function prefetchSlots(){
+    if(prefetched||sent) return;
+    prefetched=true;
+    try{ weekDates(0).forEach(function(d){ if(!d.off) fetchSlots(d.iso).catch(function(){}); }); }catch(e){}
+  }
+
+  function complete(){
+    pushConversion();          /* ★ここでCV */
+    /* 全回答が揃った状態でもう一度先行登録する。
+       メール欄のblur時点では姓名・電話が空のことがあり、そのままだと不完全なコンタクトが残るため。
+       force=true で同じメールでも送り直す（サーバー側でメールキーに上書きされる想定）。 */
+    capture(true);
+    closeModal(true);
+    $('#dots').hidden=true;
+    $('#pbarTitle').hidden=true;
+    routing=true; replaceHash('#calendar'); routing=false;
+    render(
+      '<div class="cal-intro" role="status">'+
+        '<p class="ci-thanks">ご回答ありがとうございます！</p>'+
+        '<p class="ci-lead">続けて、ご希望の面談日時をお選びください。</p>'+
+        '<p class="ci-note">面談予約は、日時の選択で完了します。</p>'+
+      '</div>'+
+      '<div class="cal-box">'+
+        '<div class="cal-hd"><span class="dur">所要時間 60分</span><h3>無料キャリア相談の日時を選ぶ</h3></div>'+
+        '<div class="cal-body">'+
+          '<div class="wk-bar">'+
+            '<p class="wk-ttl">日時を選択してください</p>'+
+            '<div class="wk-nav">'+
+              '<button type="button" class="wk-btn" id="wkPrev" aria-label="前の5日">‹</button>'+
+              '<span class="wk-lbl" id="wkLbl"></span>'+
+              '<button type="button" class="wk-btn" id="wkNext" aria-label="次の5日">›</button>'+
+            '</div>'+
+          '</div>'+
+          '<div id="cal"><p class="cal-load">空き日時を取得しています…</p></div>'+
+        '</div>'+
+      '</div>'
+    );
+    $('#wkPrev').onclick=function(){ if(weekOffset>0){ weekOffset--; loadWeek(false); } };
+    $('#wkNext').onclick=function(){ if(weekOffset<maxWeekOffset()){ weekOffset++; loadWeek(false); } };
+    $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    weekOffset=0; weekSlots={};
+    loadWeek(true, Date.now());   /* 先読み済みならキャッシュから即描画 */
+  }
+
+  function updateWeekBar(){
+    var ds=weekDates(weekOffset);
+    var lbl=$('#wkLbl');
+    if(lbl) lbl.textContent=ds[0].iso.slice(5).replace('-','/')+' - '+ds[ds.length-1].iso.slice(5).replace('-','/');
+    var p=$('#wkPrev'), n=$('#wkNext');
+    if(p) p.disabled=(weekOffset<=0);
+    if(n) n.disabled=(weekOffset>=maxWeekOffset());
+  }
+
+  /* 表示中の5日を並列取得して描く。autoJump=true なら、その5日に空きが無いとき受付期間内で次へ進む。
+     t0 を渡すと、送信から描画までの待ち時間を slot_view で計測する（先読みの効き目を測るため）。 */
+  function loadWeek(autoJump, t0){
+    var box=$('#cal'); if(!box) return;
+    updateWeekBar();
+    var ds=weekDates(weekOffset);
+    var need=ds.filter(function(d){ return !d.off && weekSlots[d.iso]===undefined; });
+    if(need.length) box.innerHTML='<p class="cal-load">空き日時を取得しています…</p>';
+    var my=weekOffset;
+    Promise.all(need.map(function(d){
+      return fetchSlots(d.iso)
+        .then(function(list){ weekSlots[d.iso]=list||[]; })
+        .catch(function(){ weekSlots[d.iso]=[]; });    /* 1日の失敗で全体を落とさない */
+    })).then(function(){
+      if(my!==weekOffset) return;   /* 取得中にページ送りされた */
+      var any=ds.some(function(d){ return !d.off && (weekSlots[d.iso]||[]).length>0; });
+      if(!any && autoJump && weekOffset<maxWeekOffset()){ weekOffset++; loadWeek(true, t0); return; }
+      renderGrid();
+      if(t0){
+        try{ window.dataLayer=window.dataLayer||[];
+             window.dataLayer.push({event:'slot_view',lp:LP,fv:(window.__fvKey||'default'),
+               slot_wait_ms:Date.now()-t0, slot_prefetched:prefetched?'1':'0'}); }catch(e){}
+      }
+    });
+  }
+
+  /* 予約失敗の案内。再描画で #cal が描き直されても消えないよう、描画時に先頭へ差し込む
+     （step の 2026-09-29 実送信テストで発覚した「失敗理由が一瞬で消える」不具合の対策を同時に移植） */
+  var bookErrMsg='';
+  function renderGrid(){
+    var box=$('#cal'); if(!box) return;
+    updateWeekBar();
+    var errHtml=bookErrMsg?'<p class="err-line show" role="alert" style="margin:0 0 14px">'+esc(bookErrMsg)+'</p>':'';
+    bookErrMsg='';
+    var ds=weekDates(weekOffset);
+    /* 5日内に存在する時刻をすべて集めて行にする */
+    var times={};
+    ds.forEach(function(d){ (weekSlots[d.iso]||[]).forEach(function(sl){ times[hhmm(sl.startIso)]=true; }); });
+    var sorted=Object.keys(times).sort();
+    if(!sorted.length){
+      box.innerHTML=errHtml+(weekOffset<maxWeekOffset()
+        ? '<p class="cal-empty">この期間は空き日時がありません。<br>「›」で次の5日間をご覧ください。</p>'
+        : '<p class="cal-empty">申し訳ありません。ただいま空き日時がありません。<br>'+
+          '担当より<b>「050」または「070」から始まる番号</b>でご連絡いたしますので、'+
+          'このままお待ちください。</p>');
+      return;
+    }
+    var html='<div class="wk-grid" role="grid">'+
+      '<div class="wk-row">'+ds.map(function(d){
+        return '<div class="wk-head'+(d.off?' off':'')+(d.wd===0?' sun':'')+(d.wd===6?' sat':'')+'">'+
+               '<span class="wk-day">'+d.day+'</span><span class="wk-dow">'+d.dow+'</span></div>';
+      }).join('')+'</div>'+
+      sorted.map(function(t){
+        return '<div class="wk-row">'+ds.map(function(d){
+          var hit=null;
+          (weekSlots[d.iso]||[]).some(function(sl){ if(hhmm(sl.startIso)===t){ hit=sl; return true; } return false; });
+          return hit
+            ? '<button type="button" class="wk-cell open" data-iso="'+esc(hit.startIso)+'" aria-label="'+esc(jpDate(new Date(hit.startIso))+' '+t)+'">'+t+'</button>'
+            : '<span class="wk-cell closed" aria-hidden="true">'+t+'</span>';
+        }).join('')+'</div>';
+      }).join('')+
+      '</div><p class="wk-hint">枠線のある時間が予約できます。押すと確認に進みます。</p>';
+    box.innerHTML=errHtml+html;
+    $$('.wk-cell.open',box).forEach(function(b){
+      b.addEventListener('click',function(){ confirmSlot(b.getAttribute('data-iso')); });
+    });
+  }
+
+  function confirmSlot(iso){
+    if(booking) return;
+    chosenIso=iso;
+    var d=new Date(iso);
+    var label=jpDate(d)+' '+hhmm(iso)+'〜';
+    var box=$('#cal');
+    box.innerHTML=
+      '<div class="cal-confirm">'+
+        '<p class="cc-q">この日時で予約を確定します</p>'+
+        '<p class="cc-dt">'+esc(label)+'</p>'+
+        '<button type="button" class="btn-next" id="bookGo">'+
+          '<span class="label">この日時で確定する</span><span class="arw" aria-hidden="true">›</span>'+
+        '</button>'+
+        '<button type="button" class="btn-back" id="bookBack">← 別の日時を選ぶ</button>'+
+      '</div>';
+    $('#bookGo').onclick=function(){ doBook(iso,this); };
+    $('#bookBack').onclick=function(){ chosenIso=null; renderGrid(); };
+    try{ window.dataLayer=window.dataLayer||[];
+         window.dataLayer.push({event:'slot_select',lp:LP,fv:(window.__fvKey||'default')}); }catch(e){}
+  }
+
+  function doBook(iso,btn){
+    if(booking) return;
+    booking=true;
+    btn.disabled=true;
+    btn.querySelector('.label').textContent='予約を確定しています…';
+    api('/book',{method:'POST',body:JSON.stringify({
+      linkId:LINK_ID, slotIso:iso, payload:answersSF(), tracking:tracking(), assignee:null
+    })}).then(function(r){
+      try{
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'schedule_complete',lp:LP,
+          fv:(window.__fvKey||'default'), booking_id:(r&&r.bookingId)||''});
+      }catch(e){}
+      var d=new Date(iso);
+      render(
+        '<div class="thanks" role="status">'+
+          '<div class="tick" aria-hidden="true">✓</div>'+
+          '<h3>ご予約ありがとうございます</h3>'+
+          '<p class="booked-dt">'+esc(jpDate(d)+' '+hhmm(iso)+'〜')+'</p>'+
+          '<p>確認メールを<br class="br-sp"><b>'+esc(data.email||'')+'</b> <span class="nw">宛にお送りしました。</span><br>'+
+          '当日はメールに記載のURLよりご参加ください。</p>'+
+        '</div>'
+      );
+      routing=true; replaceHash('#complete'); routing=false;
+      $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+    }).catch(function(e){
+      booking=false;
+      btn.disabled=false;
+      btn.querySelector('.label').textContent='この日時で確定する';
+      chosenIso=null;
+      bookErrMsg='予約に失敗しました（'+(e.message||'通信エラー')+'）。お手数ですが、別の日時をお選びください。';
+      try{ window.dataLayer=window.dataLayer||[];
+           window.dataLayer.push({event:'schedule_error',lp:LP,fv:(window.__fvKey||'default')}); }catch(x){}
+      slotCache={}; weekSlots={}; loadWeek(false);
+    });
+  }
+
+  /* ══════════════════════════════════════════
+     ハッシュルーター（#step1〜#step3 / #complete）
+  ══════════════════════════════════════════ */
+  var STEPS={1:step1,2:step2,3:step3};
+  var routing=false;
+  var lastTracked=0;
+
+  function unlocked(n){
+    if(n<=1) return true;
+    var d=data;
+    if(n===2) return !!(d.experiences&&d.experiences.length) && !!d.hasLicense;
+    if(n===3) return unlocked(2) && !!d.birthYear && !!d.area;
+    return false;
+  }
+  function hashStep(){
+    var m=(location.hash||'').match(/^#step(\d+)$/);
+    return m?parseInt(m[1],10):0;
+  }
+  function replaceHash(h){
+    history.replaceState(null,'',location.pathname+location.search+h);
+  }
+  function trackStepView(n){
+    if(n===lastTracked) return;      /* 同一ステップの再描画では発火しない（巻き戻し時の二重計上防止） */
+    lastTracked=n;
+    try{
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({
+        event:'form_step_view', lp:LP, form_step:n,
+        fv:(window.__fvKey||'default'),
+        virtual_path:location.pathname+'#step'+n
+      });
+    }catch(e){}
+  }
+  function maxUnlocked(){
+    for(var i=TOTAL;i>=1;i--){ if(unlocked(i)) return i; }
+    return 1;
+  }
+  /* 自前のハッシュ遷移かどうかの目印。
+     ⚠ `location.hash=` は hashchange だけでなく **popstate も発火する**（2026-09-21 実測）。
+        目印を立てておかないと、離脱ポップアップの「戻る横取り」が
+        「次へ進む」のたびに誤爆する。pushState/replaceState は popstate を出さないので
+        目印を立てるのは location.hash 代入のときだけ。 */
+  var selfNav=false;
+
+  function nav(n){
+    if(location.hash==='#step'+n){ draw(n); return; }
+    selfNav=true;
+    location.hash='step'+n;
+  }
+  function draw(n){ STEPS[n](); trackStepView(n); }
+
+  function onRoute(){
+    if(routing) return;
+
+    /* CTA（#form）で来たときは、いまのステップのまま位置だけ寄せる */
+    if(location.hash==='#form'||location.hash==='#formsec'){
+      var cur=sent?0:(hashStep()||maxUnlocked());
+      routing=true; replaceHash(sent?'#complete':'#step'+cur); routing=false;
+      interacted=true;
+      $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+      return;
+    }
+
+    var n=hashStep();
+
+    /* 送信後はカレンダー/完了画面を維持（戻るでフォームに戻さない＝二重送信・混乱の防止） */
+    if(sent){
+      if(location.hash!=='#complete'&&location.hash!=='#calendar'){
+        routing=true; replaceHash(chosenIso?'#complete':'#calendar'); routing=false;
+      }
+      return;
+    }
+    if(location.hash==='#complete'){ routing=true; replaceHash('#step1'); routing=false; n=1; }
+
+    /* 不正ハッシュ・範囲外・未完了ステップの飛び越し
+       → 入力済みデータで進める最大のステップへ巻き戻す（入力を失わせない） */
+    if(n<1||n>TOTAL||!unlocked(n)){
+      var max=maxUnlocked();
+      routing=true; replaceHash('#step'+max); routing=false;
+      draw(max);
+      return;
+    }
+    draw(n);
+  }
+  window.addEventListener('hashchange',onRoute);
+
+  /* ══════════ CTAクリック計測 ══════════ */
+  $$('[data-cta]').forEach(function(el){
+    el.addEventListener('click',function(){
+      interacted=true;
+      try{ window.dataLayer=window.dataLayer||[];
+           window.dataLayer.push({event:'cta_click',lp:LP,
+             cta_position:el.getAttribute('data-cta'),fv:(window.__fvKey||'default')}); }catch(e){}
+    });
+  });
+
+  /* ページ内アンカー（FVのCTA・スキップリンク）は **ハッシュを変えずに** スクロールさせる。
+     ⚠ href="#form" を素で踏ませると、ハッシュが #step1 → #form へ変わり、
+        Chrome はこれを同一ドキュメント遷移として **popstate を発火させる**。
+        下のSP側ハンドラは「#stepN から外れた戻る＝離脱」と判定するため、
+        **FVのCTAを押しただけで離脱ポップアップが出る**（2026-09-24 本番で再現）。
+        preventDefault してスクロールだけ行えば、履歴もハッシュも動かない。 */
+  $$('a[href="#form"]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    });
+  });
+
+  /* ══════════ 離脱ポップアップ ══════════
+     1セッション1回まで。送信済みなら出さない。
+     PC=上端マウスアウト／SP=戻る操作をダミー履歴で1回だけ横取り。 */
+  var modal=$('#exitModal');
+  var popped=false;
+  function shown(){
+    try{ return sessionStorage.getItem('ks_entry_exit')==='1'; }catch(e){ return false; }
+  }
+  function markShown(){ try{ sessionStorage.setItem('ks_entry_exit','1'); }catch(e){} }
+  function openModal(){
+    if(!EXIT_POPUP||popped||sent||shown()) return;
+    popped=true; markShown();
+    modal.hidden=false; modal.classList.add('is-on');
+    document.body.style.overflow='hidden';   /* 背面のスクロール抜けを止める */
+    $('#exitBack').focus();
+    try{ window.dataLayer=window.dataLayer||[];
+         window.dataLayer.push({event:'exit_popup_view',lp:LP,form_step:lastTracked,
+           fv:(window.__fvKey||'default')}); }catch(e){}
+  }
+  function closeModal(silent){
+    document.body.style.overflow='';
+    if(!modal.classList.contains('is-on')) return;
+    modal.classList.remove('is-on'); modal.hidden=true;
+    if(!silent){
+      try{ window.dataLayer=window.dataLayer||[];
+           window.dataLayer.push({event:'exit_popup_close',lp:LP}); }catch(e){}
+    }
+  }
+  if(EXIT_POPUP){
+    $('#exitClose').onclick=function(){ closeModal(); };
+    $('#exitDismiss').onclick=function(){ closeModal(); };
+    $('#exitBack').onclick=function(){
+      closeModal(true);
+      try{ window.dataLayer=window.dataLayer||[];
+           window.dataLayer.push({event:'cta_click',lp:LP,cta_position:'exit_popup',
+             fv:(window.__fvKey||'default')}); }catch(e){}
+      interacted=true;
+      $('#form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    };
+    modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+    /* PC: ビューポート上端を抜けたら
+       ⚠ ここは `document` の 'mouseout' で組んではいけない。
+          mouseout はバブルするため、ステップ描画で stage.innerHTML を差し替えた瞬間に
+          relatedTarget=null の mouseout が飛び、カーソルが上端付近（未操作なら 0,0）に
+          あるだけでポップアップが暴発する（2026-09-21 実機で再現）。
+          html要素の 'mouseleave'（バブルしない・実際に窓の外へ出たときだけ）＋
+          「一度でもマウスを動かしたか」の2条件で判定する。 */
+    var coarse=window.matchMedia('(pointer: coarse)').matches;
+    if(!coarse){
+      var movedOnce=false;
+      document.addEventListener('mousemove',function(){ movedOnce=true; },{passive:true});
+      document.documentElement.addEventListener('mouseleave',function(e){
+        if(!movedOnce) return;
+        if(e.relatedTarget) return;   /* iframe等への移動は離脱ではない */
+        if(e.clientY>6) return;       /* 上端（タブ・アドレスバー方向）へ抜けたときだけ */
+        openModal();
+      });
+    }
+    /* SP: 「ページから出る方向の戻る」だけを1回横取りする。
+       ダミー履歴を1段積んでおき（この時点ではまだハッシュ無し＝[ページ, #step1] になる）、
+       戻ってハッシュが #stepN から外れたときだけ離脱とみなす。
+       フォーム内の戻る（#step3→#step2）や、自前の nav() による前進では出さない。 */
+    if(coarse){
+      try{ history.pushState(null,'',location.href); }catch(e){}
+      window.addEventListener('popstate',function(){
+        if(selfNav){ selfNav=false; return; }          /* 自前の前進 */
+        if(popped||sent||shown()) return;
+        if(hashStep()>0) return;                       /* フォーム内の戻る＝離脱ではない */
+        /* 表示中のステップへ戻す（maxUnlocked だと見ていた画面から飛ぶ） */
+        try{ history.pushState(null,'',
+              location.pathname+location.search+'#step'+(lastTracked||1)); }catch(e){}
+        openModal();
+      });
+    }
+  }
+
+  /* 初期表示は必ず #step1（後段への直リンクはデータがないため無効） */
+  if(location.hash!=='#step1') replaceHash('#step1');
+  draw(1);
+})();
+</script>
+</body>
+</html>
