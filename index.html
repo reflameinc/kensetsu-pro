@@ -525,10 +525,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* 建設系の資格の有無（旧・資格12択の置き換え） */
   var LICENSE_YN=['はい','いいえ'];
 
-  /* 生年（西暦）。18歳〜70歳を新しい順に。年が変わっても自動で追随する。 */
+  /* 生年（西暦）。18歳〜49歳を新しい順に。年が変わっても自動で追随する。
+     年齢は「今年なる歳」（THIS_YEAR−生年）で数える。2026-10-14 本人指示で上限を70→49歳に。 */
   var THIS_YEAR=new Date().getFullYear();
   var BIRTH_YEARS=(function(){
-    var a=[]; for(var y=THIS_YEAR-18; y>=THIS_YEAR-70; y--) a.push(String(y)); return a;
+    var a=[]; for(var y=THIS_YEAR-18; y>=THIS_YEAR-49; y--) a.push(String(y)); return a;
   })();
   /* ex（年代カード7択）との横断集計のため、生年から同じバケットを導出して両方送る */
   function ageBucket(year){
